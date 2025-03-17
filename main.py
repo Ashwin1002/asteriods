@@ -1,7 +1,8 @@
 import pygame
 from constants import *
 from player import Player
-
+from asteroids import Asteroid
+from asteroidfield import AsteroidField
 
 def main():
     print("Starting Asteroids!")
@@ -14,7 +15,14 @@ def main():
     # limiting shape drawable group
     drawable = pygame.sprite.Group()
 
+    asteroids = pygame.sprite.Group()
+
+    AsteroidField.containers = updatable
+    asteroid_field = AsteroidField()
+
     Player.containers = (updatable, drawable)
+
+    Asteroid.containers = (asteroids, updatable, drawable)
 
     dt = 0
     pygame.init()
@@ -33,7 +41,7 @@ def main():
         
         for obj in drawable:
             obj.draw(screen)
-            
+
         pygame.display.flip()
         dt = clock.tick(60) / 1000 
 
