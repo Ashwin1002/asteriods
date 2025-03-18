@@ -45,11 +45,16 @@ def main():
                 return
         
         updatable.update(dt)
+ 
+        for asteroid in asteroids:
+            if asteroid.detect_collision(player):
+                print("Game over!")
+                sys.exit()
 
-        # for asteriod in asteroids:
-        #     if asteriod.detect_collision(player):
-        #         print("Game Over!")
-        #         sys.exit()
+            for shot in shots:
+                if asteroid.detect_collision(shot):
+                    shot.kill()
+                    asteroid.kill()
 
         pygame.Surface.fill(screen, (0,0,0))
         
