@@ -28,7 +28,7 @@ def show_game_over(screen, score):
 
         # Score Text
         score_text = font_medium.render(f"Your final score is {score}!", True, WHITE)
-        screen.blit(score_text, (popup_x + 150, popup_y + 80))
+        screen.blit(score_text, (popup_x + 80, popup_y + 80))
 
         # Draw Buttons
         play_again_button = pygame.Rect(popup_x + 100, popup_y + 150, 200, 50)
