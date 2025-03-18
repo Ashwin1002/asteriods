@@ -5,6 +5,10 @@ import sys
 
 def show_game_over(screen, score):
     """ Displays a Game Over popup with options to restart or exit """
+
+    game_over_sound = pygame.mixer.Sound("resources/sounds/game_over.wav")
+    game_over_sound.play() # play game over sound
+
     popup_width, popup_height = 400, 300
     popup_x, popup_y = (SCREEN_WIDTH - popup_width) // 2, (SCREEN_HEIGHT - popup_height) // 2
 
@@ -19,7 +23,7 @@ def show_game_over(screen, score):
     LIGHT_GRAY = (180, 180, 180)
 
     while True:
-        screen.fill(BLACK)  # Dark background
+        screen.fill(BLACK)
         pygame.draw.rect(screen, GRAY, (popup_x, popup_y, popup_width, popup_height), border_radius=15)
 
         # "Game Over" Text
@@ -54,6 +58,7 @@ def show_game_over(screen, score):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 if play_again_button.collidepoint(mouse_pos):
+                    game_over_sound.stop()  # Stop game over sound
                     return True  # Restart game
                 elif exit_button.collidepoint(mouse_pos):
                     pygame.quit()

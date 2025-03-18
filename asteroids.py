@@ -19,6 +19,8 @@ class Asteroid(CircleShape):
             frame = EXPLOSION_FRAMES[self.explosion_frame]
             screen.blit(frame, (self.position.x - frame.get_width() // 2, 
                                 self.position.y - frame.get_height() // 2))
+            explosion_sound = pygame.mixer.Sound("resources/sounds/explosion.wav")
+            explosion_sound.play()
         else:
             pygame.draw.circle(screen, "white", self.position, self.radius, 2)
     

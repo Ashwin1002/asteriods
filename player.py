@@ -60,3 +60,5 @@ class Player(CircleShape):
         self.cooldown_timer = PLAYER_SHOOT_COOLDOWN
         shot = Shot(self.position.x, self.position.y)
         shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+        shoot_sound = pygame.mixer.Sound("resources/sounds/single_shot.mp3")
+        shoot_sound.play()
