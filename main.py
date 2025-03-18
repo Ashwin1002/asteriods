@@ -67,8 +67,9 @@ def main():
 
             for shot in shots:
                 if asteroid.detect_collision(shot):
-                    shot.kill()
-                    score += asteroid.split(screen)
+                    if not asteroid.exploding:
+                        shot.kill()
+                        score += asteroid.split(screen)
 
         screen.blit(background, (0, 0))
         
