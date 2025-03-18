@@ -1,6 +1,8 @@
 # Asteroid
 Asteroid is a pygame where you can infinitely shoot the asteroids to achieve a high score.
 
+![Demo](https://github.com/user-attachments/assets/dc8d291b-da2c-4b69-83d9-ab2203b62582)
+
 ## How to play
 Use following keyboard commands:
 
