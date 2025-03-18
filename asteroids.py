@@ -5,7 +5,7 @@ from circleshape import CircleShape
 from constants import ASTEROID_MIN_RADIUS
 
 # Load explosion frames (Ensure you have frame_0.png, frame_1.png, etc.)
-EXPLOSION_FRAMES = [pygame.image.load(f"resources/images/explosion{i}.png") for i in range(11)]  # Adjust as needed
+EXPLOSION_FRAMES = [pygame.image.load(f"resources/images/explosion/explosion{i}.png") for i in range(11)]  # Adjust as needed
 class Asteroid(CircleShape):
     def __init__(self, x, y, radius):
         super().__init__(x, y, radius)

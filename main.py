@@ -17,6 +17,9 @@ def main():
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    background = pygame.image.load("resources/images/space_background.png")  
+    background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
     # limiting key event update to updatable group
     updatable = pygame.sprite.Group()
 
@@ -67,7 +70,7 @@ def main():
                     shot.kill()
                     score += asteroid.split(screen)
 
-        pygame.Surface.fill(screen, (0,0,0))
+        screen.blit(background, (0, 0))
         
         for obj in drawable:
             obj.draw(screen)
