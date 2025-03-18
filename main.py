@@ -1,13 +1,19 @@
 import pygame
+import sys
 from constants import *
 from player import Player
 from asteroids import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 def main():
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
+
+    pygame.init()
+    clock = pygame.time.Clock()
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
     # limiting key event update to updatable group
     updatable = pygame.sprite.Group()
@@ -17,18 +23,21 @@ def main():
 
     asteroids = pygame.sprite.Group()
 
+    shots = pygame.sprite.Group()
+
+    Shot.containers = (shots, updatable, drawable)
+
+    Asteroid.containers = (asteroids, updatable, drawable)
+
     AsteroidField.containers = updatable
     asteroid_field = AsteroidField()
 
     Player.containers = (updatable, drawable)
 
-    Asteroid.containers = (asteroids, updatable, drawable)
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     dt = 0
-    pygame.init()
-    clock = pygame.time.Clock()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    
 
     while True:
         for event in pygame.event.get():
@@ -36,6 +45,11 @@ def main():
                 return
         
         updatable.update(dt)
+
+        # for asteriod in asteroids:
+        #     if asteriod.detect_collision(player):
+        #         print("Game Over!")
+        #         sys.exit()
 
         pygame.Surface.fill(screen, (0,0,0))
         
